@@ -19,7 +19,7 @@ resolveVersions('12', function (err, versions) {
 });
 
 // expression
-resolveVersions('>=8', function (err, versions) {
+resolveVersions('>=8', { range: 'major,even' }, function (err, versions) {
   assert.ok(!err);
   assert.ok(versions.length > 1);
 });
@@ -46,7 +46,7 @@ assert.equal(versions.length, 1);
 assert.equal(versions[0].slice(0, 4), 'v12.');
 
 // expression
-var versions = await resolveVersions('>=8')
+var versions = await resolveVersions('>=8', { range: 'major,even' })
 assert.ok(versions.length > 1);
 
 // expression
