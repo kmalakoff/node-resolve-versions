@@ -70,7 +70,7 @@ describe('callback', function () {
       });
     });
     it('>=8', function (done) {
-      resolveVersions('>=8', function (err, versions) {
+      resolveVersions('>=8', { range: 'major,even' }, function (err, versions) {
         assert.ok(!err);
         assert.ok(versions.length > 1);
         done();

@@ -80,7 +80,7 @@ describe('promise', function () {
         .catch(done);
     });
     it('>=8', function (done) {
-      resolveVersions('>=8')
+      resolveVersions('>=8', { range: 'major,even' })
         .then(function (versions) {
           assert.ok(versions.length > 1);
           done();
