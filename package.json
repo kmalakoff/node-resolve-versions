@@ -1,0 +1,48 @@
+{
+  "name": "node-resolve-versions",
+  "version": "0.1.0",
+  "description": "Convert a version expression to released Node.js versions (by full or partial semver, expression, or package.json engines.node)",
+  "keywords": [
+    "node",
+    "semver",
+    "version",
+    "versions",
+    "string",
+    "expression",
+    "package.json",
+    "engines",
+    "engines.node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kmalakoff/node-resolve-versions.git"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "format": "eslint . --fix",
+    "lint": "eslint .",
+    "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
+  },
+  "dependencies": {
+    "isarray": "^2.0.5",
+    "lodash.uniq": "^4.5.0",
+    "node-semvers": "^0.4.13",
+    "queue-cb": "^1.1.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha-compat": "^3.5.5",
+    "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
