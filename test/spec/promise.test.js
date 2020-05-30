@@ -87,9 +87,39 @@ describe('promise', function () {
         })
         .catch(done);
     });
-    it('using engines - 12', function (done) {
+    it('12,14 (uniq, default sort, trim)', function (done) {
+      resolveVersions('12.1.0,14.3.0, 12.1.0')
+        .then(function (versions) {
+          assert.equal(versions.length, 2);
+          assert.equal(versions[0], 'v12.1.0');
+          assert.equal(versions[1], 'v14.3.0');
+          done();
+        })
+        .catch(done);
+    });
+    it('12,14 (sort 1)', function (done) {
+      resolveVersions('14.3.0,12.1.0', { sort: 1 })
+        .then(function (versions) {
+          assert.equal(versions.length, 2);
+          assert.equal(versions[0], 'v12.1.0');
+          assert.equal(versions[1], 'v14.3.0');
+          done();
+        })
+        .catch(done);
+    });
+    it('12,14 (sort -1)', function (done) {
+      resolveVersions('12.1.0,14.3.0', { sort: -1 })
+        .then(function (versions) {
+          assert.equal(versions.length, 2);
+          assert.equal(versions[0], 'v14.3.0');
+          assert.equal(versions[1], 'v12.1.0');
+          done();
+        })
+        .catch(done);
+    });
+    it('using engines (12, trim)', function (done) {
       var cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
-      resolveVersions('engines', { cwd: cwd })
+      resolveVersions('engines ', { cwd: cwd })
         .then(function (versions) {
           assert.equal(versions.length, 1);
           assert.ok(versions[0].indexOf('v12.') === 0);
