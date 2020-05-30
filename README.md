@@ -24,6 +24,12 @@ resolveVersions('>=8', function (err, versions) {
   assert.ok(versions.length > 1);
 });
 
+// expression
+resolveVersions('12,14', function (err, versions) {
+  assert.ok(!err);
+  assert.ok(versions.length > 1);
+});
+
 // engines from package.json engines.node in cwd
 resolveVersions('engines', function (err, versions) {
   assert.ok(!err);
@@ -41,6 +47,10 @@ assert.equal(versions[0].slice(0, 4), 'v12.');
 
 // expression
 var versions = await resolveVersions('>=8')
+assert.ok(versions.length > 1);
+
+// expression
+var versions = await resolveVersions('12,14')
 assert.ok(versions.length > 1);
 
 // engines from package.json engines.node in cwd
