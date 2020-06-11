@@ -28,7 +28,7 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^0.4.17",
+    "node-semvers": "^0.4.18",
     "queue-cb": "^1.1.4",
     "semver": "^5.7.1"
   },
