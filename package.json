@@ -1,6 +1,6 @@
 {
   "name": "node-resolve-versions",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Convert a version expression to released Node.js versions (by full or partial semver, expression, or package.json engines.node)",
   "keywords": [
     "node",
@@ -28,8 +28,8 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^0.4.19",
-    "queue-cb": "^1.1.5",
+    "node-semvers": "^0.5.0",
+    "queue-cb": "^1.1.6",
     "semver": "^5.7.1"
   },
   "devDependencies": {
