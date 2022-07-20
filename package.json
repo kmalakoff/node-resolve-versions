@@ -25,20 +25,19 @@
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint .",
-    "prepublishOnly": "dtd \"npm run lint\" \"depcheck\"",
+    "prepublishOnly": "npm run lint && depcheck",
     "test": "mocha-compat test/spec/**/*.test.js --no-timeouts"
   },
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^0.5.6",
+    "node-semvers": "^0.6.0",
     "semver": "^5.7.1"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.7",
     "depcheck": "^1.4.3",
-    "dis-dat": "^0.1.7",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
