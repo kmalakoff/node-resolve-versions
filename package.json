@@ -33,11 +33,11 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^0.6.4",
+    "node-semvers": "^0.6.5",
     "semver": "^5.7.1"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.31.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "depcheck": "^1.4.3",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
