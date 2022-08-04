@@ -33,7 +33,7 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^0.6.5",
+    "node-semvers": "^0.6.6",
     "semver": "^5.7.1"
   },
   "devDependencies": {
