@@ -1,16 +1,30 @@
 "use strict";
-var NodeSemvers = require("node-semvers");
-var resolveVersions = require("./resolveVersions");
-module.exports = function nodeResolveVersions(versionDetails, options, callback) {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return nodeResolveVersions;
+    }
+});
+var _nodesemvers = /*#__PURE__*/ _interop_require_default(require("node-semvers"));
+var _resolveVersions = /*#__PURE__*/ _interop_require_default(require("./resolveVersions"));
+function _interop_require_default(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+function nodeResolveVersions(versionDetails, options, callback) {
     if (typeof options === "function") {
         callback = options;
         options = {};
     }
     if (typeof callback === "function") {
-        return NodeSemvers.load(function(err, semvers) {
+        return _nodesemvers.default.load(function(err, semvers) {
             if (err) return callback(err);
             try {
-                var version = resolveVersions(semvers, versionDetails, options || {});
+                var version = (0, _resolveVersions.default)(semvers, versionDetails, options || {});
                 callback(null, version);
             } catch (err) {
                 callback(err);
@@ -22,14 +36,9 @@ module.exports = function nodeResolveVersions(versionDetails, options, callback)
             err ? reject(err) : resolve(result);
         });
     });
-};
-module.exports.sync = function nodeResolveVersionsSync(versionDetails, options) {
-    var semvers = NodeSemvers.loadSync();
-    return resolveVersions(semvers, versionDetails, options || {});
-};
-
-if ((typeof exports.default === 'function' || (typeof exports.default === 'object' && exports.default !== null)) && typeof exports.default.__esModule === 'undefined') {
-  Object.defineProperty(exports.default, '__esModule', { value: true });
-  for (var key in exports) exports.default[key] = exports[key];
-  module.exports = exports.default;
 }
+module.exports.sync = function nodeResolveVersionsSync(versionDetails, options) {
+    var semvers = _nodesemvers.default.loadSync();
+    return (0, _resolveVersions.default)(semvers, versionDetails, options || {});
+};
+/* CJS INTEROP */ if (exports.__esModule && exports.default) { Object.defineProperty(exports.default, '__esModule', { value: true }); for (var key in exports) exports.default[key] = exports[key]; module.exports = exports.default; }

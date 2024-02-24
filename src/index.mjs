@@ -1,7 +1,7 @@
-const NodeSemvers = require('node-semvers');
-const resolveVersions = require('./resolveVersions');
+import NodeSemvers from 'node-semvers';
+import resolveVersions from './resolveVersions';
 
-module.exports = function nodeResolveVersions(versionDetails, options, callback) {
+export default function nodeResolveVersions(versionDetails, options, callback) {
   if (typeof options === 'function') {
     callback = options;
     options = {};
