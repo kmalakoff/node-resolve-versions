@@ -27,8 +27,8 @@
     "build": "tsds build",
     "deploy": "tsds deploy",
     "format": "biome check --apply-unsafe src/ test/",
-    "test": "tsds test:node --timeout=40000",
-    "test:engines": "nvu engines tsds test:node --timeout=40000",
+    "test": "tsds test:node --timeout=10000",
+    "test:engines": "nvu engines npm test",
     "version": "tsds version"
   },
   "dependencies": {
@@ -38,17 +38,17 @@
     "semver": "^5.7.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
+    "@biomejs/biome": "^1.7.1",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.12.7",
     "depcheck": "^1.4.7",
-    "ts-dev-stack": "^0.9.10"
+    "ts-dev-stack": "^0.15.8"
   },
   "engines": {
     "node": ">=0.8"
   },
   "tsds": {
-    "source": "src/index.js",
+    "source": "src/index.mjs",
     "targets": [
       "cjs"
     ]
