@@ -1,13 +1,13 @@
 "use strict";
-var path = require("path");
-var isArray = require("isarray");
+var path = require('path');
+var isArray = require('isarray');
 module.exports = function resolveExpression(key, semvers, options) {
     key = key.trim();
-    if (key === "engines") {
-        var fullPath = path.join(options.cwd || process.cwd(), "package.json");
+    if (key === 'engines') {
+        var fullPath = path.join(options.cwd || process.cwd(), 'package.json');
         var pkg = require(fullPath);
-        if (typeof pkg.engines === "undefined") throw new Error("Engines not found in ".concat(fullPath));
-        if (typeof pkg.engines.node === "undefined") throw new Error("Engines node not found in ".concat(fullPath));
+        if (typeof pkg.engines === 'undefined') throw new Error("Engines not found in ".concat(fullPath));
+        if (typeof pkg.engines.node === 'undefined') throw new Error("Engines node not found in ".concat(fullPath));
         return resolveExpression(pkg.engines.node, semvers, options);
     }
     var version = semvers.resolve(key, options);
@@ -16,9 +16,4 @@ module.exports = function resolveExpression(key, semvers, options) {
         version
     ];
 };
-
-if ((typeof exports.default === 'function' || (typeof exports.default === 'object' && exports.default !== null)) && typeof exports.default.__esModule === 'undefined') {
-  Object.defineProperty(exports.default, '__esModule', { value: true });
-  for (var key in exports) exports.default[key] = exports[key];
-  module.exports = exports.default;
-}
+/* CJS INTEROP */ if (exports.__esModule && exports.default) { Object.defineProperty(exports.default, '__esModule', { value: true }); for (var key in exports) exports.default[key] = exports[key]; module.exports = exports.default; }
