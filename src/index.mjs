@@ -1,4 +1,6 @@
 import NodeSemvers from 'node-semvers';
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+import Promise from 'pinkie-promise';
 import resolveVersions from './resolveVersions';
 
 export default function nodeResolveVersions(versionDetails, options, callback) {
