@@ -12,7 +12,7 @@ var resolveVersions = require('versions-string-to-versions');
 
 // version string
 resolveVersions('12', function (err, versions) {
-  assert.ok(!err);
+  assert.ok(!err, err ? err.message : '');
   assert.equal(versions.length, 1);
   assert.equal(versions[0].slice(0, 4), 'v12.');
   done();
@@ -20,19 +20,19 @@ resolveVersions('12', function (err, versions) {
 
 // expression
 resolveVersions('>=8', { range: 'major,even' }, function (err, versions) {
-  assert.ok(!err);
+  assert.ok(!err, err ? err.message : '');
   assert.ok(versions.length > 1);
 });
 
 // expression
 resolveVersions('12,14', function (err, versions) {
-  assert.ok(!err);
+  assert.ok(!err, err ? err.message : '');
   assert.ok(versions.length > 1);
 });
 
 // engines from package.json engines.node in cwd
 resolveVersions('engines', function (err, versions) {
-  assert.ok(!err);
+  assert.ok(!err, err ? err.message : '');
   assert.ok(versions.length >= 1);
 });
 
