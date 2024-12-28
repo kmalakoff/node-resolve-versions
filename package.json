@@ -34,7 +34,7 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^1.2.3",
+    "node-semvers": "^1.2.5",
     "pinkie-promise": "^2.0.1",
     "semver": "^5.7.1"
   },
@@ -42,10 +42,8 @@
     "@biomejs/biome": "^1.9.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.10.2",
-    "depcheck": "^1.4.7",
-    "ts-dev-stack": "^1.5.4"
+    "depcheck": "^1.4.7"
   },
-  "packageManager": "npm@11.0.0+sha512.11dff29565d2297c74e7c594a9762581bde969f0aa5cbe6f5b3644bf008a16c065ece61094d9ffbb81125be38df8e1ba43eb8244b3d30c61eb797e9a2440e3ec",
   "engines": {
     "node": ">=0.8"
   },
