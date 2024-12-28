@@ -5,6 +5,18 @@ const resolveVersions = require('node-resolve-versions');
 const versionDetails_14_4_0 = require('../data/versionDetails_14_4_0');
 
 describe('callback', () => {
+  (() => {
+    // patch and restore promise
+    let rootPromise;
+    before(() => {
+      rootPromise = global.Promise;
+      global.Promise = require('pinkie-promise');
+    });
+    after(() => {
+      global.Promise = rootPromise;
+    });
+  })();
+
   describe('happy path', () => {
     it('v12', (done) => {
       resolveVersions('v12', (err, versions) => {
@@ -166,25 +178,17 @@ describe('callback', () => {
       });
     });
 
-    it('using description from https://nodejs.org/dist/index.json - promise', (done) => {
-      resolveVersions(versionDetails_14_4_0)
-        .then((versions) => {
-          assert.equal(versions.length, 1);
-          assert.equal(versions[0], 'v14.4.0');
-          done();
-        })
-        .catch(done);
+    it('using description from https://nodejs.org/dist/index.json - promise', async () => {
+      const versions = await resolveVersions(versionDetails_14_4_0);
+      assert.equal(versions.length, 1);
+      assert.equal(versions[0], 'v14.4.0');
     });
 
-    it('12,14 (sort 1) - promise', (done) => {
-      resolveVersions('14.3.0,12.1.0', { sort: 1 })
-        .then((versions) => {
-          assert.equal(versions.length, 2);
-          assert.equal(versions[0], 'v12.1.0');
-          assert.equal(versions[1], 'v14.3.0');
-          done();
-        })
-        .catch(done);
+    it('12,14 (sort 1) - promise', async () => {
+      const versions = await resolveVersions('14.3.0,12.1.0', { sort: 1 });
+      assert.equal(versions.length, 2);
+      assert.equal(versions[0], 'v12.1.0');
+      assert.equal(versions[1], 'v14.3.0');
     });
   });
 
