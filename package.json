@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:kmalakoff/node-resolve-versions.git"
+    "url": "git+ssh://git@github.com/kmalakoff/node-resolve-versions.git"
   },
   "license": "MIT",
   "main": "dist/cjs/index.cjs",
@@ -35,7 +35,7 @@
   "dependencies": {
     "isarray": "^2.0.5",
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^1.3.1",
+    "node-semvers": "^1.3.2",
     "semver": "^5.7.1"
   },
   "devDependencies": {
