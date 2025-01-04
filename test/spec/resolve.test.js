@@ -150,7 +150,7 @@ describe('callback', () => {
     });
 
     it('using engines (12, trim)', (done) => {
-      const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
+      const cwd = path.join(path.join(__dirname, '..', 'data', 'engines'));
       resolveVersions('engines ', { cwd }, (err, versions) => {
         assert.ok(!err, err ? err.message : '');
         assert.equal(versions.length, 1);
@@ -264,7 +264,7 @@ describe('callback', () => {
     });
 
     it('engines missing', (done) => {
-      const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
+      const cwd = path.join(path.join(__dirname, '..', 'data', 'engines-missing'));
       resolveVersions('engines', { cwd }, (err, _versions) => {
         assert.ok(!!err);
         done();
@@ -272,7 +272,7 @@ describe('callback', () => {
     });
 
     it('engines node missing', (done) => {
-      const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
+      const cwd = path.join(path.join(__dirname, '..', 'data', 'engines-node-missing'));
       resolveVersions('engines', { cwd }, (err, _versions) => {
         assert.ok(!!err);
         done();

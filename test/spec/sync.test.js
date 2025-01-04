@@ -96,7 +96,7 @@ describe('sync', () => {
     });
 
     it('using engines (12, trim)', () => {
-      const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines'));
+      const cwd = path.join(path.join(__dirname, '..', 'data', 'engines'));
       const versions = resolveVersions.sync('engines ', { cwd });
       assert.equal(versions.length, 1);
       assert.ok(versions[0].indexOf('v12.') === 0);
@@ -209,7 +209,7 @@ describe('sync', () => {
 
     it('engines missing', () => {
       try {
-        const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-missing'));
+        const cwd = path.join(path.join(__dirname, '..', 'data', 'engines-missing'));
         resolveVersions.sync('engines', { cwd });
         assert.ok(false);
       } catch (err) {
@@ -219,7 +219,7 @@ describe('sync', () => {
 
     it('engines node missing', () => {
       try {
-        const cwd = path.resolve(path.join(__dirname, '..', 'data', 'engines-node-missing'));
+        const cwd = path.join(path.join(__dirname, '..', 'data', 'engines-node-missing'));
         resolveVersions.sync('engines', { cwd });
         assert.ok(false);
       } catch (err) {
