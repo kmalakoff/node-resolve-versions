@@ -1,3 +1,4 @@
 {
-  "name": "engines-missing"
+  "name": "node-resolve-version-engines-missing",
+  "private": true
 }
