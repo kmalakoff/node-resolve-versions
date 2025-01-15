@@ -1,1 +1,1 @@
-ignores: ["@types/*", "node-resolve-versions", "depcheck", "@biomejs/*"]
+ignores: ["node-resolve-versions"]
