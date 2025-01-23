@@ -1,5 +1,5 @@
 const path = require('path');
-const isArray = require('isarray');
+const isArray = Array.isArray || ((x) => Object.prototype.toString.call(x) === '[object Array]');
 
 module.exports = function resolveExpression(key, semvers, options) {
   key = key.trim();
