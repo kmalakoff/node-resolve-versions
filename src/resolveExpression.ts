@@ -1,7 +1,7 @@
-const path = require('path');
+import path from 'path';
 const isArray = Array.isArray || ((x) => Object.prototype.toString.call(x) === '[object Array]');
 
-module.exports = function resolveExpression(key, semvers, options) {
+export default function resolveExpression(key, semvers, options) {
   key = key.trim();
   if (key === 'engines') {
     const fullPath = path.join(options.cwd || process.cwd(), 'package.json');
@@ -13,4 +13,4 @@ module.exports = function resolveExpression(key, semvers, options) {
   const version = semvers.resolve(key, options);
   if (!version || (isArray(version) && !version.length)) throw new Error(`Unrecognized version ${key}`);
   return isArray(version) ? version : [version];
-};
+}
