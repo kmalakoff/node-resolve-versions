@@ -1,5 +1,5 @@
 import NodeSemvers from 'node-semvers';
-import resolveVersions from './resolveVersions';
+import resolveVersions from './resolveVersions.cjs';
 
 function worker(versionDetails, options, callback) {
   return NodeSemvers.load((err, semvers) => {
