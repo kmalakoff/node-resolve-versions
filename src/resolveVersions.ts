@@ -1,9 +1,9 @@
-const uniq = require('lodash.uniq');
+import uniq from 'lodash.uniq';
 
-const resolveExpression = require('./resolveExpression.cjs');
-const sortFunction = require('./sortFunction.cjs');
+import resolveExpression from './resolveExpression.js';
+import sortFunction from './sortFunction.js';
 
-module.exports = function resolveVersions(semvers, versionDetails, options) {
+export default function resolveVersions(semvers, versionDetails, options) {
   if (versionDetails === null || versionDetails === undefined) throw new Error('versionDetails missing');
   if (typeof versionDetails === 'number') versionDetails = `${versionDetails}`;
   if (typeof versionDetails === 'string') {
@@ -17,4 +17,4 @@ module.exports = function resolveVersions(semvers, versionDetails, options) {
   }
   if (!versionDetails.version || !versionDetails.files) throw new Error(`Unrecognized version details object: ${JSON.stringify(versionDetails)}`);
   return options.path === 'raw' ? [versionDetails] : [versionDetails.version];
-};
+}
