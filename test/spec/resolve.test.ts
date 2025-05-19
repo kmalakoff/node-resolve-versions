@@ -1,16 +1,24 @@
-const assert = require('assert');
-const path = require('path');
+import assert from 'assert';
+import path from 'path';
+import url from 'url';
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+import Promise from 'pinkie-promise';
 
-const resolveVersions = require('node-resolve-versions');
-const versionDetails_14_4_0 = require('../data/versionDetails_14_4_0');
+// @ts-ignore
+import resolveVersions from 'node-resolve-versions';
+// @ts-ignore
+import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.ts';
+
+const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : url.fileURLToPath(import.meta.url));
 
 describe('callback', () => {
   (() => {
     // patch and restore promise
-    let rootPromise;
+    // @ts-ignore
+    let rootPromise: Promise;
     before(() => {
       rootPromise = global.Promise;
-      global.Promise = require('pinkie-promise');
+      global.Promise = Promise;
     });
     after(() => {
       global.Promise = rootPromise;
