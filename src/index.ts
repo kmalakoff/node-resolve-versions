@@ -16,7 +16,7 @@ function worker(versionDetails, options, callback) {
 import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.js';
 export * from './types.js';
 
-export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult | VersionResult[]> | undefined {
+export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult[]> | undefined {
   if (typeof options === 'function') {
     callback = options as VersionCallback;
     options = {};
