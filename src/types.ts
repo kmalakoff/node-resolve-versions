@@ -13,7 +13,7 @@ export interface VersionResultRaw {
 }
 
 export type VersionResult = string | VersionResultRaw;
-export type VersionCallback = (error?: Error, result?: VersionResult | VersionResult[] | undefined) => undefined;
+export type VersionCallback = (error?: Error, result?: VersionResult[] | undefined) => undefined;
 
 export interface VersionOptions {
   raw?: boolean;
