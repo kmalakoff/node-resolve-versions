@@ -1,7 +1,7 @@
 const uniq = require('lodash.uniq');
 
-const resolveExpression = require('./resolveExpression');
-const sortFunction = require('./sortFunction');
+const resolveExpression = require('./resolveExpression.cjs');
+const sortFunction = require('./sortFunction.cjs');
 
 module.exports = function resolveVersions(semvers, versionDetails, options) {
   if (versionDetails === null || versionDetails === undefined) throw new Error('versionDetails missing');
