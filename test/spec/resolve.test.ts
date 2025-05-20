@@ -1,8 +1,7 @@
 import assert from 'assert';
 import path from 'path';
 import url from 'url';
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-import Promise from 'pinkie-promise';
+import Pinkie from 'pinkie-promise';
 
 // @ts-ignore
 import resolveVersions from 'node-resolve-versions';
@@ -18,7 +17,7 @@ describe('callback', () => {
     let rootPromise: Promise;
     before(() => {
       rootPromise = global.Promise;
-      global.Promise = Promise;
+      global.Promise = Pinkie;
     });
     after(() => {
       global.Promise = rootPromise;
