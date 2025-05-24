@@ -3,9 +3,9 @@ import path from 'path';
 import url from 'url';
 
 // @ts-ignore
-import { sync } from 'node-resolve-versions';
+import { type VersionResultRaw, sync } from 'node-resolve-versions';
 // @ts-ignore
-import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.ts';
+import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.cjs';
 
 const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : url.fileURLToPath(import.meta.url));
 
@@ -92,7 +92,7 @@ describe('sync', () => {
     });
 
     it('12,14 (sort -1, path raw)', () => {
-      const versions = sync('12.1.0,14.3.0', { sort: -1, path: 'raw' });
+      const versions = sync('12.1.0,14.3.0', { sort: -1, path: 'raw' }) as VersionResultRaw[];
       assert.equal(versions.length, 2);
       assert.ok(versions[0].files !== undefined);
       assert.equal(versions[0].version, 'v14.3.0');
@@ -108,13 +108,13 @@ describe('sync', () => {
     });
 
     it('using description from https://nodejs.org/dist/index.json', () => {
-      const versions = sync(versionDetails_14_4_0);
+      const versions = sync(versionDetails_14_4_0 as unknown as VersionResultRaw);
       assert.equal(versions.length, 1);
       assert.equal(versions[0], 'v14.4.0');
     });
 
     it('using description from https://nodejs.org/dist/index.json (path raw)', () => {
-      const versions = sync(versionDetails_14_4_0, { path: 'raw' });
+      const versions = sync(versionDetails_14_4_0 as unknown as VersionResultRaw, { path: 'raw' }) as VersionResultRaw[];
       assert.equal(versions.length, 1);
       assert.ok(versions[0].files !== undefined);
       assert.equal(versions[0].version, 'v14.4.0');
