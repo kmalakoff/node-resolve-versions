@@ -27,7 +27,7 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, opti
   return new Promise((resolve, reject) => worker(versionDetails, options, (err, result) => (err ? reject(err) : resolve(result))));
 }
 
-export function sync(versionDetails, options) {
+export function sync(versionDetails: VersionDetails, options?: VersionOptions) {
   const semvers = NodeSemvers.loadSync();
   return resolveVersions(semvers, versionDetails, options || {});
 }
