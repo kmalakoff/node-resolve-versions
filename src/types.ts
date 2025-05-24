@@ -16,7 +16,11 @@ export type VersionResult = string | VersionResultRaw;
 export type VersionCallback = (error?: Error, result?: VersionResult[] | undefined) => undefined;
 
 export interface VersionOptions {
+  cwd?: string;
   raw?: boolean;
+  path?: string;
+  sort?: number;
+  range?: string;
 }
 
-export type VersionDetails = string | number;
+export type VersionDetails = string | number | VersionResultRaw;
