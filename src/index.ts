@@ -14,6 +14,7 @@ function worker(versionDetails, options, callback) {
 }
 
 import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.js';
+
 export * from './types.js';
 
 export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult[]> | undefined {
