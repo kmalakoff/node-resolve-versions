@@ -1,9 +1,8 @@
 import assert from 'assert';
+// @ts-ignore
+import { sync, type VersionResultRaw } from 'node-resolve-versions';
 import path from 'path';
 import url from 'url';
-
-// @ts-ignore
-import { type VersionResultRaw, sync } from 'node-resolve-versions';
 // @ts-ignore
 import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.cjs';
 

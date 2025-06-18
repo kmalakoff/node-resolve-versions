@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+
 const isArray = Array.isArray || ((x) => Object.prototype.toString.call(x) === '[object Array]');
 
 export default function resolveExpression(key, semvers, options) {
