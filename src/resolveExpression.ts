@@ -1,9 +1,12 @@
 import fs from 'fs';
+import type NodeSemvers from 'node-semvers';
 import path from 'path';
 
 const isArray = Array.isArray || ((x) => Object.prototype.toString.call(x) === '[object Array]');
 
-export default function resolveExpression(key, semvers, options) {
+import type { VersionOptions, VersionResult } from './types.ts';
+
+export default function resolveExpression(key: string, semvers: NodeSemvers, options: VersionOptions): VersionResult[] {
   key = key.trim();
   if (key === 'engines') {
     const fullPath = path.join(options.cwd || process.cwd(), 'package.json');
@@ -12,7 +15,7 @@ export default function resolveExpression(key, semvers, options) {
     if (typeof pkg.engines.node === 'undefined') throw new Error(`Engines node not found in ${fullPath}`);
     return resolveExpression(pkg.engines.node, semvers, options);
   }
-  const version = semvers.resolve(key, options);
-  if (!version || (isArray(version) && !version.length)) throw new Error(`Unrecognized version ${key}`);
-  return isArray(version) ? version : [version];
+  const version = semvers.resolve(key, options) as VersionResult | VersionResult[];
+  if (!version || (isArray(version) && !(version as VersionResult[]).length)) throw new Error(`Unrecognized version ${key}`);
+  return isArray(version) ? (version as VersionResult[]) : [version as VersionResult];
 }
