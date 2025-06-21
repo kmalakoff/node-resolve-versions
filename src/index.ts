@@ -24,6 +24,6 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, opti
   );
 }
 
-export function sync(versionDetails: VersionDetails, options?: VersionOptions): VersionResult {
+export function sync(versionDetails: VersionDetails, options?: VersionOptions): VersionResult[] {
   return workerSync(versionDetails, options);
 }

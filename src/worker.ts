@@ -15,7 +15,7 @@ export default function worker(versionDetails: VersionDetails, options: VersionO
   });
 }
 
-export function sync(versionDetails: VersionDetails, options: VersionOptions): VersionResult {
+export function sync(versionDetails: VersionDetails, options: VersionOptions): VersionResult[] {
   const semvers = NodeSemvers.loadSync();
   return resolveVersions(semvers, versionDetails, options || {});
 }
