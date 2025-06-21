@@ -1,21 +1,13 @@
-import NodeSemvers from 'node-semvers';
-import resolveVersions from './resolveVersions.ts';
-
-function worker(versionDetails, options, callback) {
-  return NodeSemvers.load((err, semvers) => {
-    if (err) return callback(err);
-    try {
-      const version = resolveVersions(semvers, versionDetails, options);
-      callback(null, version);
-    } catch (err) {
-      callback(err);
-    }
-  });
-}
-
 import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.ts';
+import worker, { sync as workerSync } from './worker.ts';
 
 export * from './types.ts';
+
+export default function nodeResolveVersions(versionDetails: VersionDetails): Promise<VersionResult[]>;
+export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<VersionResult[]>;
+
+export default function nodeResolveVersions(versionDetails: VersionDetails, callback: VersionCallback): undefined;
+export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): undefined;
 
 export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult[]> | undefined {
   if (typeof options === 'function') {
@@ -25,10 +17,13 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, opti
   options = options || {};
 
   if (typeof callback === 'function') return worker(versionDetails, options, callback) as undefined;
-  return new Promise((resolve, reject) => worker(versionDetails, options, (err, result) => (err ? reject(err) : resolve(result))));
+  return new Promise((resolve, reject) =>
+    worker(versionDetails, options, (err, result) => {
+      err ? reject(err) : resolve(result);
+    })
+  );
 }
 
-export function sync(versionDetails: VersionDetails, options?: VersionOptions) {
-  const semvers = NodeSemvers.loadSync();
-  return resolveVersions(semvers, versionDetails, options || {});
+export function sync(versionDetails: VersionDetails, options?: VersionOptions): VersionResult {
+  return workerSync(versionDetails, options);
 }
