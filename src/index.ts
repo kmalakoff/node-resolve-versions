@@ -1,5 +1,5 @@
 import NodeSemvers from 'node-semvers';
-import resolveVersions from './resolveVersions.js';
+import resolveVersions from './resolveVersions.ts';
 
 function worker(versionDetails, options, callback) {
   return NodeSemvers.load((err, semvers) => {
@@ -13,9 +13,9 @@ function worker(versionDetails, options, callback) {
   });
 }
 
-import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.js';
+import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.ts';
 
-export * from './types.js';
+export * from './types.ts';
 
 export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult[]> | undefined {
   if (typeof options === 'function') {

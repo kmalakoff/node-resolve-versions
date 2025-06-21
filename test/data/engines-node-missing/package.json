@@ -1,5 +1,6 @@
 {
   "name": "node-resolve-versions-engines-node-missing",
   "private": true,
-  "engines": {}
+  "engines": {},
+  "version": ""
 }
