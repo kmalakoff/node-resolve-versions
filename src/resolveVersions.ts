@@ -1,7 +1,7 @@
 import uniq from 'lodash.uniq';
 
-import resolveExpression from './resolveExpression.js';
-import sortFunction from './sortFunction.js';
+import resolveExpression from './resolveExpression.ts';
+import sortFunction from './sortFunction.ts';
 
 export default function resolveVersions(semvers, versionDetails, options) {
   if (versionDetails === null || versionDetails === undefined) throw new Error('versionDetails missing');

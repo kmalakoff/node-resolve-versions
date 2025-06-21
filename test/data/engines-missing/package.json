@@ -1,4 +1,5 @@
 {
   "name": "node-resolve-version-engines-missing",
-  "private": true
+  "private": true,
+  "version": ""
 }
