@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "lodash.uniq": "^4.5.0",
-    "node-semvers": "^1.4.1",
+    "node-semvers": "^1.4.2",
     "semver": "^5.7.1"
   },
   "devDependencies": {
