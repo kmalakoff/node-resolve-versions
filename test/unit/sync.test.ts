@@ -10,55 +10,55 @@ const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : 
 describe('sync', () => {
   describe('happy path', () => {
     it('v12', () => {
-      const versions = sync('v12');
+      const versions = sync('v12') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 4), 'v12.');
     });
 
     it('12', () => {
-      const versions = sync('12');
+      const versions = sync('12') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 4), 'v12.');
     });
 
     it('12 number', () => {
-      const versions = sync(12);
+      const versions = sync(12) as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 4), 'v12.');
     });
 
     it('v0', () => {
-      const versions = sync('v0');
+      const versions = sync('v0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 3), 'v0.');
     });
 
     it('0', () => {
-      const versions = sync('0');
+      const versions = sync('0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 3), 'v0.');
     });
 
     it('v12.0', () => {
-      const versions = sync('v12.0');
+      const versions = sync('v12.0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 6), 'v12.0.');
     });
 
     it('12.0', () => {
-      const versions = sync('12.0');
+      const versions = sync('12.0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions[0].slice(0, 6), 'v12.0.');
     });
 
     it('v12.1.0', () => {
-      const versions = sync('v12.1.0');
+      const versions = sync('v12.1.0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions, 'v12.1.0');
     });
 
     it('12.1.0', () => {
-      const versions = sync('12.1.0');
+      const versions = sync('12.1.0') as string[];
       assert.equal(versions.length, 1);
       assert.equal(versions, 'v12.1.0');
     });
@@ -100,7 +100,7 @@ describe('sync', () => {
 
     it('using engines (12, trim)', () => {
       const cwd = path.join(path.join(__dirname, '..', 'data', 'engines'));
-      const versions = sync('engines ', { cwd });
+      const versions = sync('engines ', { cwd }) as string[];
       assert.equal(versions.length, 1);
       assert.ok(versions[0].indexOf('v12.') === 0);
     });
