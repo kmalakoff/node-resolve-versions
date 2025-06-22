@@ -1,15 +1,17 @@
-import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.ts';
+import type { VersionCallback, VersionDetails, VersionOptions, VersionResultRaw } from './types.ts';
 import worker, { sync as workerSync } from './worker.ts';
 
 export * from './types.ts';
 
-export default function nodeResolveVersions(versionDetails: VersionDetails): Promise<VersionResult[]>;
-export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<VersionResult[]>;
+export default function nodeResolveVersions(versionDetails: VersionDetails): Promise<string[]>;
+export default function nodeResolveVersions(versionDetails: VersionDetails): Promise<VersionResultRaw[]>;
+export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<string[]>;
+export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<VersionResultRaw[]>;
 
 export default function nodeResolveVersions(versionDetails: VersionDetails, callback: VersionCallback): undefined;
 export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): undefined;
 
-export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<VersionResult[]> | undefined {
+export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<string[] | VersionResultRaw[]> | undefined {
   if (typeof options === 'function') {
     callback = options as VersionCallback;
     options = {};
@@ -24,6 +26,6 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, opti
   );
 }
 
-export function sync(versionDetails: VersionDetails, options?: VersionOptions): VersionResult[] {
+export function sync(versionDetails: VersionDetails, options?: VersionOptions): string[] | VersionResultRaw[] {
   return workerSync(versionDetails, options);
 }

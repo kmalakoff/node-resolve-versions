@@ -4,9 +4,9 @@ import type NodeSemvers from 'node-semvers';
 import resolveExpression from './resolveExpression.ts';
 import sortFunction from './sortFunction.ts';
 
-import type { VersionDetails, VersionOptions, VersionResult } from './types.ts';
+import type { VersionDetails, VersionOptions, VersionResultRaw } from './types.ts';
 
-export default function resolveVersions(semvers: NodeSemvers, versionDetails: VersionDetails, options: VersionOptions): VersionResult[] {
+export default function resolveVersions(semvers: NodeSemvers, versionDetails: VersionDetails, options: VersionOptions): string[] | VersionResultRaw[] {
   if (versionDetails === null || versionDetails === undefined) throw new Error('versionDetails missing');
   if (typeof versionDetails === 'number') versionDetails = `${versionDetails}`;
   if (typeof versionDetails === 'string') {
