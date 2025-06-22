@@ -1,7 +1,7 @@
 import NodeSemvers from 'node-semvers';
 import resolveVersions from './resolveVersions.ts';
 
-import type { VersionCallback, VersionDetails, VersionOptions, VersionResult } from './types.ts';
+import type { VersionCallback, VersionDetails, VersionOptions, VersionResultRaw } from './types.ts';
 
 export default function worker(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): undefined {
   NodeSemvers.load((err, semvers) => {
@@ -14,8 +14,10 @@ export default function worker(versionDetails: VersionDetails, options: VersionO
     }
   });
 }
+export function sync(versionDetails: VersionDetails, options: VersionOptions): string[];
+export function sync(versionDetails: VersionDetails, options: VersionOptions): VersionResultRaw[];
 
-export function sync(versionDetails: VersionDetails, options: VersionOptions): VersionResult[] {
+export function sync(versionDetails: VersionDetails, options: VersionOptions): string[] | VersionResultRaw[] {
   const semvers = NodeSemvers.loadSync();
   return resolveVersions(semvers, versionDetails, options || {});
 }
