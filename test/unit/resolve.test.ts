@@ -4,7 +4,7 @@ import resolveVersions, { type VersionResultRaw } from 'node-resolve-versions';
 import path from 'path';
 import Pinkie from 'pinkie-promise';
 import url from 'url';
-import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.cjs';
+import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.ts';
 
 const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : url.fileURLToPath(import.meta.url));
 
