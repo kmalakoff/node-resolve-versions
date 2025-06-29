@@ -1,6 +1,6 @@
 {
   "name": "node-resolve-versions",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Convert a version expression to released Node.js versions (by full or partial semver, expression, or package.json engines.node)",
   "keywords": [
     "node",
