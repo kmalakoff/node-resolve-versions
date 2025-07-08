@@ -41,8 +41,8 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "lodash.uniq": "^4.5.0",
-    "node-semvers": "^1.5.4",
+    "lodash.uniq": "*",
+    "node-semvers": "*",
     "semver": "^5.7.1"
   },
   "devDependencies": {
