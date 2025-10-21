@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import resolveVersions, { type VersionResultRaw } from 'node-resolve-versions';
 import path from 'path';
 import Pinkie from 'pinkie-promise';

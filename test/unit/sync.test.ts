@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import { sync, type VersionResultRaw } from 'node-resolve-versions';
 import path from 'path';
 import url from 'url';
