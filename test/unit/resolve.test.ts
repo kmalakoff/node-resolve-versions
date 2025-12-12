@@ -24,7 +24,7 @@ describe('callback', () => {
     it('v12', (done) => {
       resolveVersions('v12', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -36,7 +36,7 @@ describe('callback', () => {
     it('12', (done) => {
       resolveVersions('12', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -48,7 +48,7 @@ describe('callback', () => {
     it('12 number', (done) => {
       resolveVersions(12, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -60,7 +60,7 @@ describe('callback', () => {
     it('v0', (done) => {
       resolveVersions('v0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -72,7 +72,7 @@ describe('callback', () => {
     it('0', (done) => {
       resolveVersions('0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -84,7 +84,7 @@ describe('callback', () => {
     it('v12.0', (done) => {
       resolveVersions('v12.0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -96,7 +96,7 @@ describe('callback', () => {
     it('12.0', (done) => {
       resolveVersions('12.0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -108,7 +108,7 @@ describe('callback', () => {
     it('v12.1.0', (done) => {
       resolveVersions('v12.1.0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -120,7 +120,7 @@ describe('callback', () => {
     it('12.1.0', (done) => {
       resolveVersions('12.1.0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -132,7 +132,7 @@ describe('callback', () => {
     it('>=8', (done) => {
       resolveVersions('>=8', { range: 'major,even' }, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.ok(versions.length > 1);
@@ -143,7 +143,7 @@ describe('callback', () => {
     it('12,14 (uniq, default sort, trim)', (done) => {
       resolveVersions('12.1.0,14.3.0, 12.1.0', (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 2);
@@ -156,7 +156,7 @@ describe('callback', () => {
     it('12,14 (sort 1)', (done) => {
       resolveVersions('14.3.0,12.1.0', { sort: 1 }, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 2);
@@ -169,7 +169,7 @@ describe('callback', () => {
     it('12,14 (sort -1)', (done) => {
       resolveVersions('12.1.0,14.3.0', { sort: -1 }, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 2);
@@ -182,7 +182,7 @@ describe('callback', () => {
     it('12,14 (sort -1, path raw)', (done) => {
       resolveVersions('12.1.0,14.3.0', { sort: -1, path: 'raw' }, (err?: Error, versions?: VersionResultRaw[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 2);
@@ -198,7 +198,7 @@ describe('callback', () => {
       const cwd = path.join(path.join(__dirname, '..', 'data', 'engines'));
       resolveVersions('engines ', { cwd }, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -210,7 +210,7 @@ describe('callback', () => {
     it('using description from https://nodejs.org/dist/index.json', (done) => {
       resolveVersions(versionDetails_14_4_0, (err?: Error, versions?: string[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
@@ -222,7 +222,7 @@ describe('callback', () => {
     it('using description from https://nodejs.org/dist/index.json (path raw)', (done) => {
       resolveVersions(versionDetails_14_4_0, { path: 'raw' }, (err?: Error, versions?: VersionResultRaw[]): undefined => {
         if (err) {
-          done(err.message);
+          done(err);
           return;
         }
         assert.equal(versions.length, 1);
