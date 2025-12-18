@@ -3,7 +3,7 @@ import resolveVersions from './resolveVersions.ts';
 
 import type { VersionCallback, VersionDetails, VersionOptions, VersionResultRaw } from './types.ts';
 
-export default function worker(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): undefined {
+export default function worker(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): void {
   NodeSemvers.load((err, semvers) => {
     if (err) return callback(err);
     try {
