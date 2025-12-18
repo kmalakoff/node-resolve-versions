@@ -8,17 +8,17 @@ export default function nodeResolveVersions(versionDetails: VersionDetails): Pro
 export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<string[]>;
 export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions): Promise<VersionResultRaw[]>;
 
-export default function nodeResolveVersions(versionDetails: VersionDetails, callback: VersionCallback): undefined;
-export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): undefined;
+export default function nodeResolveVersions(versionDetails: VersionDetails, callback: VersionCallback): void;
+export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): void;
 
-export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<string[] | VersionResultRaw[]> | undefined {
+export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<string[] | VersionResultRaw[]> | void {
   if (typeof options === 'function') {
     callback = options as VersionCallback;
     options = {};
   }
   options = options || {};
 
-  if (typeof callback === 'function') return worker(versionDetails, options, callback) as undefined;
+  if (typeof callback === 'function') return worker(versionDetails, options, callback);
   return new Promise((resolve, reject) =>
     worker(versionDetails, options, (err, result) => {
       err ? reject(err) : resolve(result);
