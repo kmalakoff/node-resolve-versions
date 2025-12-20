@@ -12,11 +12,8 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, call
 export default function nodeResolveVersions(versionDetails: VersionDetails, options: VersionOptions, callback: VersionCallback): void;
 
 export default function nodeResolveVersions(versionDetails: VersionDetails, options?: VersionOptions | VersionCallback, callback?: VersionCallback): Promise<string[] | VersionResultRaw[]> | void {
-  if (typeof options === 'function') {
-    callback = options as VersionCallback;
-    options = {};
-  }
-  options = options || {};
+  callback = typeof options === 'function' ? options : callback;
+  options = typeof options === 'function' ? {} : ((options || {}) as VersionOptions);
 
   if (typeof callback === 'function') return worker(versionDetails, options, callback);
   return new Promise((resolve, reject) =>
