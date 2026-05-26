@@ -48,6 +48,7 @@
   "devDependencies": {
     "@types/mocha": "*",
     "@types/node": "*",
+    "@types/semver": "^7.7.1",
     "node-version-use": "*",
     "pinkie-promise": "*",
     "ts-dev-stack": "*",
