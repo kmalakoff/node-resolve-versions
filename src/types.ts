@@ -12,7 +12,7 @@ export interface VersionResultRaw {
   security: boolean;
 }
 
-export type VersionCallback = (error?: Error, result?: string[] | VersionResultRaw[]) => void;
+export type VersionCallback = (error?: Error | null, result?: string[] | VersionResultRaw[]) => void;
 
 export interface VersionOptions {
   cwd?: string;
