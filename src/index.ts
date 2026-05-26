@@ -16,9 +16,9 @@ export default function nodeResolveVersions(versionDetails: VersionDetails, opti
   options = typeof options === 'function' ? {} : ((options || {}) as VersionOptions);
 
   if (typeof callback === 'function') return worker(versionDetails, options, callback);
-  return new Promise((resolve, reject) => worker(versionDetails, options, (err, result) => (err ? reject(err) : resolve(result))));
+  return new Promise((resolve, reject) => worker(versionDetails, options, (err, result) => (err ? reject(err) : resolve(result as string[] | VersionResultRaw[]))));
 }
 
 export function sync(versionDetails: VersionDetails, options?: VersionOptions): string[] | VersionResultRaw[] {
-  return workerSync(versionDetails, options);
+  return workerSync(versionDetails, options || {});
 }

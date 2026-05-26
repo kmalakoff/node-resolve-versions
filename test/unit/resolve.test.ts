@@ -22,212 +22,178 @@ describe('callback', () => {
 
   describe('happy path', () => {
     it('v12', (done) => {
-      resolveVersions('v12', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 4), 'v12.');
+      resolveVersions('v12', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 4), 'v12.');
         done();
       });
     });
 
     it('12', (done) => {
-      resolveVersions('12', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 4), 'v12.');
+      resolveVersions('12', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 4), 'v12.');
         done();
       });
     });
 
     it('12 number', (done) => {
-      resolveVersions(12, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 4), 'v12.');
+      resolveVersions(12, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 4), 'v12.');
         done();
       });
     });
 
     it('v0', (done) => {
-      resolveVersions('v0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 3), 'v0.');
+      resolveVersions('v0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 3), 'v0.');
         done();
       });
     });
 
     it('0', (done) => {
-      resolveVersions('0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 3), 'v0.');
+      resolveVersions('0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 3), 'v0.');
         done();
       });
     });
 
     it('v12.0', (done) => {
-      resolveVersions('v12.0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 6), 'v12.0.');
+      resolveVersions('v12.0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 6), 'v12.0.');
         done();
       });
     });
 
     it('12.0', (done) => {
-      resolveVersions('12.0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0].slice(0, 6), 'v12.0.');
+      resolveVersions('12.0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0].slice(0, 6), 'v12.0.');
         done();
       });
     });
 
     it('v12.1.0', (done) => {
-      resolveVersions('v12.1.0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions, 'v12.1.0');
+      resolveVersions('v12.1.0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v, 'v12.1.0');
         done();
       });
     });
 
     it('12.1.0', (done) => {
-      resolveVersions('12.1.0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions, 'v12.1.0');
+      resolveVersions('12.1.0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v, 'v12.1.0');
         done();
       });
     });
 
     it('>=8', (done) => {
-      resolveVersions('>=8', { range: 'major,even' }, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.ok(versions.length > 1);
+      resolveVersions('>=8', { range: 'major,even' }, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.ok(v.length > 1);
         done();
       });
     });
 
     it('12,14 (uniq, default sort, trim)', (done) => {
-      resolveVersions('12.1.0,14.3.0, 12.1.0', (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 2);
-        assert.equal(versions[0], 'v12.1.0');
-        assert.equal(versions[1], 'v14.3.0');
+      resolveVersions('12.1.0,14.3.0, 12.1.0', (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 2);
+        assert.equal(v[0], 'v12.1.0');
+        assert.equal(v[1], 'v14.3.0');
         done();
       });
     });
 
     it('12,14 (sort 1)', (done) => {
-      resolveVersions('14.3.0,12.1.0', { sort: 1 }, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 2);
-        assert.equal(versions[0], 'v12.1.0');
-        assert.equal(versions[1], 'v14.3.0');
+      resolveVersions('14.3.0,12.1.0', { sort: 1 }, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 2);
+        assert.equal(v[0], 'v12.1.0');
+        assert.equal(v[1], 'v14.3.0');
         done();
       });
     });
 
     it('12,14 (sort -1)', (done) => {
-      resolveVersions('12.1.0,14.3.0', { sort: -1 }, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 2);
-        assert.equal(versions[0], 'v14.3.0');
-        assert.equal(versions[1], 'v12.1.0');
+      resolveVersions('12.1.0,14.3.0', { sort: -1 }, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 2);
+        assert.equal(v[0], 'v14.3.0');
+        assert.equal(v[1], 'v12.1.0');
         done();
       });
     });
 
     it('12,14 (sort -1, path raw)', (done) => {
-      resolveVersions('12.1.0,14.3.0', { sort: -1, path: 'raw' }, (err?: Error, versions?: VersionResultRaw[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 2);
-        assert.ok(versions[0].files !== undefined);
-        assert.equal(versions[0].version, 'v14.3.0');
-        assert.ok(versions[1].files !== undefined);
-        assert.equal(versions[1].version, 'v12.1.0');
+      resolveVersions('12.1.0,14.3.0', { sort: -1, path: 'raw' }, (err, versions) => {
+        if (err) return done(err);
+        const rawVersions = versions as VersionResultRaw[];
+        assert.equal(rawVersions.length, 2);
+        assert.ok(rawVersions[0].files !== undefined);
+        assert.equal(rawVersions[0].version, 'v14.3.0');
+        assert.ok(rawVersions[1].files !== undefined);
+        assert.equal(rawVersions[1].version, 'v12.1.0');
         done();
       });
     });
 
     it('using engines (12, trim)', (done) => {
       const cwd = path.join(path.join(__dirname, '..', 'data', 'engines'));
-      resolveVersions('engines ', { cwd }, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.ok(versions[0].indexOf('v12.') === 0);
+      resolveVersions('engines ', { cwd }, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.ok(v[0].indexOf('v12.') === 0);
         done();
       });
     });
 
     it('using description from https://nodejs.org/dist/index.json', (done) => {
-      resolveVersions(versionDetails_14_4_0, (err?: Error, versions?: string[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.equal(versions[0], 'v14.4.0');
+      resolveVersions(versionDetails_14_4_0, (err, versions) => {
+        if (err) return done(err);
+        const v = versions as string[];
+        assert.equal(v.length, 1);
+        assert.equal(v[0], 'v14.4.0');
         done();
       });
     });
 
     it('using description from https://nodejs.org/dist/index.json (path raw)', (done) => {
-      resolveVersions(versionDetails_14_4_0, { path: 'raw' }, (err?: Error, versions?: VersionResultRaw[]): void => {
-        if (err) {
-          done(err);
-          return;
-        }
-        assert.equal(versions.length, 1);
-        assert.ok(versions[0].files !== undefined);
-        assert.equal(versions[0].version, 'v14.4.0');
+      resolveVersions(versionDetails_14_4_0, { path: 'raw' }, (err, versions) => {
+        if (err) return done(err);
+        const rawVersions = versions as VersionResultRaw[];
+        assert.equal(rawVersions.length, 1);
+        assert.ok(rawVersions[0].files !== undefined);
+        assert.equal(rawVersions[0].version, 'v14.4.0');
         done();
       });
     });
