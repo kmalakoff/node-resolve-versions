@@ -2,6 +2,7 @@ var assert = require('assert');
 var path = require('path');
 
 var resolveVersions = require('../..');
+// eslint-disable-next-line camelcase
 var versionDetails_14_4_0 = require('../data/versionDetails_14_4_0');
 
 describe('callback', function () {
