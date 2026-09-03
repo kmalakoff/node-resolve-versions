@@ -1,11 +1,11 @@
 import semver from 'semver';
 
-import type { VersionOptions, VersionResultRaw } from './types.ts';
+import type { VersionOptions, VersionRecord } from './types.ts';
 
 const asc = (a: string, b: string) => (semver.gt(a, b) ? 1 : -1);
-const ascRaw = (a: VersionResultRaw, b: VersionResultRaw) => (semver.gt(a.version, b.version) ? 1 : -1);
+const ascRaw = (a: VersionRecord, b: VersionRecord) => (semver.gt(a.version, b.version) ? 1 : -1);
 const dsc = (a: string, b: string) => (semver.gt(a, b) ? -1 : 1);
-const dscRaw = (a: VersionResultRaw, b: VersionResultRaw) => (semver.gt(a.version, b.version) ? -1 : 1);
+const dscRaw = (a: VersionRecord, b: VersionRecord) => (semver.gt(a.version, b.version) ? -1 : 1);
 
 type compareFn = (a: unknown, b: unknown) => number;
 

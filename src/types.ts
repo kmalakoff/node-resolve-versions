@@ -1,18 +1,12 @@
-export interface VersionResultRaw {
-  version: string;
-  date: string;
-  files: string[];
-  npm: string;
-  v8: string;
-  uv: string;
-  zlib: string;
-  openssl: string;
-  modules: string;
-  lts: boolean;
-  security: boolean;
-}
+import type { VersionRaw } from 'node-semvers';
 
-export type VersionCallback = (error?: Error | null, result?: string[] | VersionResultRaw[]) => void;
+/**
+ * The underlying per-version record returned with `path: 'raw'` — aliased from
+ * node-semvers so the shape can never drift from the cache it comes from.
+ */
+export type VersionRecord = VersionRaw;
+
+export type VersionCallback = (error?: Error | null, result?: string[] | VersionRecord[]) => void;
 
 export interface VersionOptions {
   cwd?: string;
@@ -21,4 +15,4 @@ export interface VersionOptions {
   range?: string;
 }
 
-export type VersionDetails = string | number | VersionResultRaw;
+export type VersionDetails = string | number | VersionRecord;
