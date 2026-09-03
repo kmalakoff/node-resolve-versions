@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { sync, type VersionResultRaw } from 'node-resolve-versions';
+import { sync, type VersionRecord } from 'node-resolve-versions';
 import path from 'path';
 import url from 'url';
 import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.cjs';
@@ -89,11 +89,11 @@ describe('sync', () => {
     });
 
     it('12,14 (sort -1, path raw)', () => {
-      const versions = sync('12.1.0,14.3.0', { sort: -1, path: 'raw' }) as VersionResultRaw[];
+      const versions = sync('12.1.0,14.3.0', { sort: -1, path: 'raw' }) as VersionRecord[];
       assert.equal(versions.length, 2);
-      assert.ok(versions[0].files !== undefined);
+      assert.ok(versions[0].date !== undefined);
       assert.equal(versions[0].version, 'v14.3.0');
-      assert.ok(versions[1].files !== undefined);
+      assert.ok(versions[1].date !== undefined);
       assert.equal(versions[1].version, 'v12.1.0');
     });
 
@@ -105,15 +105,15 @@ describe('sync', () => {
     });
 
     it('using description from https://nodejs.org/dist/index.json', () => {
-      const versions = sync(versionDetails_14_4_0 as unknown as VersionResultRaw);
+      const versions = sync(versionDetails_14_4_0 as unknown as VersionRecord);
       assert.equal(versions.length, 1);
       assert.equal(versions[0], 'v14.4.0');
     });
 
     it('using description from https://nodejs.org/dist/index.json (path raw)', () => {
-      const versions = sync(versionDetails_14_4_0 as unknown as VersionResultRaw, { path: 'raw' }) as VersionResultRaw[];
+      const versions = sync(versionDetails_14_4_0 as unknown as VersionRecord, { path: 'raw' }) as VersionRecord[];
       assert.equal(versions.length, 1);
-      assert.ok(versions[0].files !== undefined);
+      assert.ok(versions[0].date !== undefined);
       assert.equal(versions[0].version, 'v14.4.0');
     });
   });
