@@ -42,7 +42,7 @@
     "version": "tsds version"
   },
   "dependencies": {
-    "node-semvers": "^1.5.17",
+    "node-semvers": "^1.8.0",
     "semver": "5.7.2"
   },
   "devDependencies": {
@@ -59,7 +59,6 @@
   },
   "allowScripts": {
     "node-filename-to-dist-paths": true,
-    "node-semvers": true,
     "node-version-use": true,
     "thread-sleep-compat": true
   }

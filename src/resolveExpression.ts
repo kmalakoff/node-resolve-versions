@@ -4,9 +4,9 @@ import path from 'path';
 
 const isArray = Array.isArray || ((x) => Object.prototype.toString.call(x) === '[object Array]');
 
-import type { VersionOptions, VersionResultRaw } from './types.ts';
+import type { VersionOptions, VersionRecord } from './types.ts';
 
-export default function resolveExpression(key: string, semvers: NodeSemvers, options: VersionOptions): string[] | VersionResultRaw[] {
+export default function resolveExpression(key: string, semvers: NodeSemvers, options: VersionOptions): string[] | VersionRecord[] {
   key = key.trim();
   if (key === 'engines') {
     const fullPath = path.join(options.cwd || process.cwd(), 'package.json');

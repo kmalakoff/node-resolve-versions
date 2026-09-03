@@ -1,5 +1,5 @@
 import assert from 'assert';
-import resolveVersions, { type VersionResultRaw } from 'node-resolve-versions';
+import resolveVersions, { type VersionRecord } from 'node-resolve-versions';
 import path from 'path';
 import Pinkie from 'pinkie-promise';
 import url from 'url';
@@ -156,11 +156,11 @@ describe('callback', () => {
     it('12,14 (sort -1, path raw)', (done) => {
       resolveVersions('12.1.0,14.3.0', { sort: -1, path: 'raw' }, (err, versions) => {
         if (err) return done(err);
-        const rawVersions = versions as VersionResultRaw[];
+        const rawVersions = versions as VersionRecord[];
         assert.equal(rawVersions.length, 2);
-        assert.ok(rawVersions[0].files !== undefined);
+        assert.ok(rawVersions[0].date !== undefined);
         assert.equal(rawVersions[0].version, 'v14.3.0');
-        assert.ok(rawVersions[1].files !== undefined);
+        assert.ok(rawVersions[1].date !== undefined);
         assert.equal(rawVersions[1].version, 'v12.1.0');
         done();
       });
@@ -178,7 +178,7 @@ describe('callback', () => {
     });
 
     it('using description from https://nodejs.org/dist/index.json', (done) => {
-      resolveVersions(versionDetails_14_4_0, (err, versions) => {
+      resolveVersions(versionDetails_14_4_0 as unknown as VersionRecord, (err, versions) => {
         if (err) return done(err);
         const v = versions as string[];
         assert.equal(v.length, 1);
@@ -188,18 +188,18 @@ describe('callback', () => {
     });
 
     it('using description from https://nodejs.org/dist/index.json (path raw)', (done) => {
-      resolveVersions(versionDetails_14_4_0, { path: 'raw' }, (err, versions) => {
+      resolveVersions(versionDetails_14_4_0 as unknown as VersionRecord, { path: 'raw' }, (err, versions) => {
         if (err) return done(err);
-        const rawVersions = versions as VersionResultRaw[];
+        const rawVersions = versions as VersionRecord[];
         assert.equal(rawVersions.length, 1);
-        assert.ok(rawVersions[0].files !== undefined);
+        assert.ok(rawVersions[0].date !== undefined);
         assert.equal(rawVersions[0].version, 'v14.4.0');
         done();
       });
     });
 
     it('using description from https://nodejs.org/dist/index.json - promise', async () => {
-      const versions = await resolveVersions(versionDetails_14_4_0);
+      const versions = await resolveVersions(versionDetails_14_4_0 as unknown as VersionRecord);
       assert.equal(versions.length, 1);
       assert.equal(versions[0], 'v14.4.0');
     });
