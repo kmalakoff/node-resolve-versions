@@ -16,7 +16,6 @@ export type VersionCallback = (error?: Error | null, result?: string[] | Version
 
 export interface VersionOptions {
   cwd?: string;
-  raw?: boolean;
   path?: string;
   sort?: number;
   range?: string;
