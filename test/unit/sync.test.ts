@@ -3,7 +3,7 @@ import assert from 'assert';
 import { sync, type VersionResultRaw } from 'node-resolve-versions';
 import path from 'path';
 import url from 'url';
-import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.ts';
+import versionDetails_14_4_0 from '../data/versionDetails_14_4_0.cjs';
 
 const __dirname = path.dirname(typeof __filename !== 'undefined' ? __filename : url.fileURLToPath(import.meta.url));
 
